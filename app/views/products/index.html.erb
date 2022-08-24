@@ -1,8 +1,5 @@
 <% if user_signed_in? %>
-  <p style="color: green"><%= notice %></p>
-
   <h1 class = "mb-4 px-4">Products</h1>
-
   <div id="products" class = "d-flex p-2 justify-content-around">
     <% @products.each do |product| %>
         <%= render product %>

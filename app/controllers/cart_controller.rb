@@ -7,12 +7,13 @@ class CartController < ApplicationController
     @product = Product.find_by(id: params[:id])
     quantity = params[:quantity].to_i
     current_orderable = @cart.orderables.find_by(product_id: @product.id)
+    @in_cart = true
     if current_orderable && quantity > 0
       current_orderable.update(quantity: quantity)
     elsif quantity <=0
       current_orderable.destroy
     else
-      flash[:notice] = "Product added to cart successfully"
+      flash.now[:notice] = "Product added to cart successfully"
       @cart.orderables.create(product: @product, quantity: quantity) 
     end
 

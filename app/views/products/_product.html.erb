@@ -1,5 +1,7 @@
 <div id="<%= dom_id product %>" >
-  <p style="color: green"><%= notice %></p>
+  <%if @in_cart%>
+    <p style="color: green"><%= notice %></p>
+  <%end%>
 
   <p>
     <strong>Name:</strong>

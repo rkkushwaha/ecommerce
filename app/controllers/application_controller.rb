@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def set_render_cart
     @render_cart = true
+    @in_cart = false
   end
 
   def initialize_cart
