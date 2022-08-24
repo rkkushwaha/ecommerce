@@ -1,0 +1,37 @@
+<div style = "margin-left: 30px">
+  <% @cart.orderables.each do |orderable| %>
+    <% product = orderable.product%>
+      <div id="<%= "cart-#{product.id}" %>">
+        <p>
+          <strong>Name:</strong>
+          <%= product.name %>
+        </p>
+
+        <p>
+          <strong>Price:</strong>
+          <%= product.price %>
+        </p>
+
+        <div>
+          <%= image_tag(product.imageurl, size: "200x300", class: "rounded img-thumbnail")%>
+        </div>
+
+        <%= form_with(url: cart_add_path) do |f| %>
+          <%= f.hidden_field :id, value: product.id %>
+          <%= f.number_field :quantity, value: orderable.quantity, min: 0, style: "max-width: min-content; text-align: center; margin: 10px 5px;" %>
+        <% end %>
+
+        <%= form_with(url: cart_remove_path) do |f| %>
+          <%= f.hidden_field :id, value: orderable.id %>
+          <%= f.submit "X", class: "btn btn-primary", style: "max-width: min-content; margin: 10px 40px; margin: 3px 70px;"%>
+        <% end %>
+
+        <p style ="margin: 3px 50px;">
+          <strong>Total:</strong>
+          <%= orderable.total %>
+        </p>
+
+      </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+
+    <title>Ecommerce</title>
+    
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
+    <%=render 'shared/navbar'%>
+  </head>
+  
+  <body>
+    <%=render 'cart/cart' if @render_cart %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

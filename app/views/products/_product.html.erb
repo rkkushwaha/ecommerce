@@ -1,0 +1,29 @@
+<div id="<%= dom_id product %>" >
+  <p style="color: green"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= product.price %>
+  </p>
+
+  <div>
+   <%= image_tag(product.imageurl, size: "200x300", class: "rounded img-thumbnail")%>
+  </div>
+
+  <p>
+    <%= link_to "Show this product", product %>
+  </p>
+
+  <%= form_with(url: cart_add_path) do |f| %>
+    <div class = "d-flex flex-sm-column ">
+    <%= f.hidden_field :id, value: product.id %>
+    <%= f.number_field :quantity, value: 0, min: 1, style: "max-width: min-content; text-align: center;"%>
+    <%= f.submit "Add To Cart", class: "btn btn-primary", style: "max-width: min-content; margin: 10px 40px;"%>
+    </div>
+  <% end %>
+</div>
